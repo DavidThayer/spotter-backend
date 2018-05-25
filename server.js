@@ -1,8 +1,11 @@
-cost express = require('express')
+const express = require('express')
 const app = express();
+const bodyParser = require('body-parser')
+
+app.use(express.static('public'));
 
 app.get('/',function(req, res) {
-    res.send('hello world')
+    res.sendFile('views/index.html', { root:__dirname});
 });
 
 app.listen(8080)
