@@ -10,6 +10,7 @@ let PostSchema = new Schema({
     purch_price: Number,
     details: String,
     website: String,
+    image: String,
     style: String,
     transaction_type: String,
     ev: Boolean,
