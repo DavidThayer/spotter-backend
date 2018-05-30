@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const Post = require('./models/post')
+const Post = require('./models/post');
 
 app.use(bodyParser.json());
 
@@ -18,12 +18,33 @@ app.get('/',function(req, res) {
     res.sendFile('views/index.html', { root:__dirname});
 });
 
-app.get('/api/posts', function index(req, res) {
-    Post.find({}, function(err, posts) {
-        if (err) res.send(err);
-        else return res.json(posts);
+
+app.get('/api/posts/?', function index(req, res) {
+    // function uppercaseSearch(searchInput) {
+    //     let searchInput = req.query
+    //     return searchInput[0] = searchInput[0].toUpperCase()
+    // }
+    console.log(22, req.query)
+    Post.find(req.query, function(err, posts) {
+        if (err) {
+        res.send(err);  
+        } else {
+        res.json(posts);
+    }
     });
 })
+
+// app.get('/api/posts', function index(req, res) { 
+//     Post.find({}, function(err, posts) {
+//         if (err) {
+//             res.send(err);  
+//         } else {
+//         // console.log(posts)
+//         res.json(posts);
+//         }
+//     });
+// })
+
 
 app.post('/api/posts', function(req, res) {
     Post.create(req.body, function (err, post) {

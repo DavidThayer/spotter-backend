@@ -118,7 +118,7 @@ let postList =
         transaction_type: 'lease or purchase',
         expiration_date: '5/31/2018',
         ev: false, 
-    },
+    }
 ]
 
     // then create new posts again
@@ -128,6 +128,6 @@ let postList =
             console.log('Error creating posts: ', err);
             return;
         }
-        console.log('Created ', res.length, ' posts', postList);
+        console.log('Created ', res);
         process.exit();
     });
