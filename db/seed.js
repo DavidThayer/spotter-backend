@@ -65,11 +65,65 @@ let postList =
         expiration_date: '5/31/2018',
         ev: true, 
     },
+    {
+        make: 'Honda',
+        model: 'Accord',
+        trim: 'Sport CVT 2WD',
+        year: 2018,
+        lease_price: 269,
+        purch_price: 0,
+        due_at_sign: 999,
+        lease_term: 36,
+        dealership: 'Honda of Hayward',
+        details: 'meh, decent',
+        website: 'https://www.hondaofhayward.com/specials/new.htm',
+        image: 'https://www.cstatic-images.com/car-pictures/xl/usc80hoc011e021001.png',
+        style: 'sedan',
+        transaction_type: 'lease or purchase',
+        expiration_date: '5/31/2018',
+        ev: false, 
+    },
+    {
+        make: 'Lexus',
+        model: 'IS 300',
+        trim: '',
+        year: 2018,
+        lease_price: 299,
+        purch_price: 0,
+        due_at_sign: 3999,
+        lease_term: 36,
+        dealership: 'Coliseum Lexis of Oakland',
+        details: 'meh',
+        website: 'https://www.coliseumlexusofoakland.com/LexusOffers_D',
+        image: 'https://www.lexus.com/cm-img/all-models/offers/2018/IS.png',
+        style: 'sedan',
+        transaction_type: 'lease or purchase',
+        expiration_date: '5/31/2018',
+        ev: false, 
+    },
+    {
+        make: 'Volvo',
+        model: 'XC60',
+        trim: 'T5',
+        year: 2018,
+        lease_price: 479,
+        purch_price: 0,
+        due_at_sign: 3929,
+        lease_term: 36,
+        dealership: 'McKevitt Volvo Cars',
+        details: 'pricey',
+        website: 'https://www.mckevittvolvo.com/',
+        image: 'https://assets.volvocars.com/us/~/media/us/images/xc60/my18/momentum/volvo-xc60-momentum-trim-v2.jpg?h=1140&la=en-US&w=1140',
+        style: 'SUV',
+        transaction_type: 'lease or purchase',
+        expiration_date: '5/31/2018',
+        ev: false, 
+    },
 ]
 
     // then create new posts again
     Post.create(postList, function(err, res) {
-        console.log('in')
+        // console.log('in')
         if (err) {
             console.log('Error creating posts: ', err);
             return;
