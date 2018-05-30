@@ -20,6 +20,10 @@ let PostSchema = new Schema({
     transaction_type: String,
     expiration_date: String,
     ev: Boolean,
+    created_at: {
+        type: Date,
+        default: Date.now
+    }
 })
 
 let Post = mongoose.model('Post', PostSchema);

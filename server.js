@@ -24,8 +24,27 @@ app.get('/api/posts/?', function index(req, res) {
     //     let searchInput = req.query
     //     return searchInput[0] = searchInput[0].toUpperCase()
     // }
+    let term = {}
+
+    console.log('req.query', req.query)
+
+    if (Object.keys(req.query).length > 0) {
+        console.log(req.query)
+        let q = (req.query.q).toLowerCase();
+        q = q[0].toUpperCase() + q.slice(1)
+        let makes = ['Honda', 'Tesla'];
+        if (makes.includes(q)) {
+        term = {
+            make: q
+        }
+        } else {
+            term = {
+                model: q
+            }
+        }
+    }
     console.log(22, req.query)
-    Post.find(req.query, function(err, posts) {
+    Post.find(term, function(err, posts) {
         if (err) {
         res.send(err);  
         } else {
