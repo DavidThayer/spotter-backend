@@ -21,14 +21,14 @@ app.get('/',function(req, res) {
 app.get('/api/posts', function index(req, res) {
     Post.find({}, function(err, posts) {
         if (err) res.send(err);
-        else res.json(posts);
+        else return res.json(posts);
     });
 })
 
 app.post('/api/posts', function(req, res) {
     Post.create(req.body, function (err, post) {
         if (err) res.send(err);
-        else res.json(post);
+        else return res.json(post);
     });
 });
 

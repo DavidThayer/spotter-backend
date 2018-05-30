@@ -14,25 +14,55 @@ let postList =
     {
         make: 'Tesla',
         model: 'Model S',
+        trim: '100D',
+        year: 2018,
         lease_price: 890,
         purch_price: 78000,
+        due_at_sign: 2400,
+        lease_term: 24,
+        dealership: 'Volkswagen of Oakland',
         details: 'no deals, everyone buys it for full price',
         website: 'https://www.tesla.com/',
         image: 'https://s.aolcdn.com/commerce/autodata/images/USC70TSC024B021001.jpg',
         style: 'Sedan',
         transaction_type: 'lease or purchase',
+        expiration_date: '5/31/2018',
         ev: true, 
     },
     {
         make: 'Tesla',
         model: 'Model 3',
+        trim: '100D',
+        year: 2018,
         lease_price: 890,
         purch_price: 78000,
+        due_at_sign: 2400,
+        lease_term: 24,
+        dealership: 'Volkswagen of Oakland',
         details: 'no deals, everyone buys it for full price',
         website: 'https://www.tesla.com/',
         image: 'https://www.tesla.com/tesla_theme/assets/img/model3/model_3--side_profile.png?20170801',
         style: 'Sedan',
         transaction_type: 'lease or purchase',
+        expiration_date: '5/31/2018',
+        ev: true, 
+    },
+    {
+        make: 'Tesla',
+        model: 'Model X',
+        trim: '100D',
+        year: 2018,
+        lease_price: 890,
+        purch_price: 78000,
+        due_at_sign: 2400,
+        lease_term: 24,
+        dealership: 'Volkswagen of Oakland',
+        details: 'no deals, everyone buys it for full price',
+        website: 'https://www.tesla.com/',
+        image: 'https://crdms.images.consumerreports.org/c_lfill,w_555/prod/cars/cr/model-years/7144-2015-tesla-modelx',
+        style: 'SUV',
+        transaction_type: 'lease or purchase',
+        expiration_date: '5/31/2018',
         ev: true, 
     },
 ]
@@ -44,6 +74,6 @@ let postList =
             console.log('Error creating posts: ', err);
             return;
         }
-        console.log('Created ', res.length, ' posts');
+        console.log('Created ', res.length, ' posts', postList);
         process.exit();
     });
