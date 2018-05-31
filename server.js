@@ -20,10 +20,6 @@ app.get('/',function(req, res) {
 
 
 app.get('/api/posts/?', function index(req, res) {
-    // function uppercaseSearch(searchInput) {
-    //     let searchInput = req.query
-    //     return searchInput[0] = searchInput[0].toUpperCase()
-    // }
     let term = {}
 
     console.log('req.query', req.query)
@@ -32,10 +28,11 @@ app.get('/api/posts/?', function index(req, res) {
         console.log(req.query)
         let q = (req.query.q).toLowerCase();
         q = q[0].toUpperCase() + q.slice(1)
-        let makes = ['Honda', 'Tesla'];
+        let makes = ['Tesla', 'Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Buick', 'Cadillac', 'Chevrolet', 'Chrysler', 'Dodge', 'FIAT', 'Ford', 'Genesis', 'GMC', 'Honda', 'Hyundai', 'INFINITI', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lexus', 'Lincoln', 'Maserati', 'Mazda', 'Mercedes-Benz', 'MINI', 'Mitsubishi', 'Nissan', 'Porsche', 'Ram', 'smart', 'Subaru', 'Toyota', 'Volkswagen', 'Volvo'];
         if (makes.includes(q)) {
         term = {
             make: q
+            // {make: /q/i} // this was supposed to be regex search for lowercase
         }
         } else {
             term = {
@@ -46,24 +43,18 @@ app.get('/api/posts/?', function index(req, res) {
     console.log(22, req.query)
     Post.find(term, function(err, posts) {
         if (err) {
-        res.send(err);  
+        res.send(err);
         } else {
-        res.json(posts);
+        if (posts.length === 0) {
+            res.json({
+                "error": "no results"
+            })
+        } else{
+            res.json(posts);
+        }
     }
     });
 })
-
-// app.get('/api/posts', function index(req, res) { 
-//     Post.find({}, function(err, posts) {
-//         if (err) {
-//             res.send(err);  
-//         } else {
-//         // console.log(posts)
-//         res.json(posts);
-//         }
-//     });
-// })
-
 
 app.post('/api/posts', function(req, res) {
     Post.create(req.body, function (err, post) {
