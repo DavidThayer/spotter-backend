@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
+const dbName = 'mongodb://localhost/post-api';
 
-mongoose.connect('mongodb://localhost/post-api');
+mongoose.Promise = global.Promise;
+
+mongoose.connect(process.env.MONGODB_URI || dbName )
+    .then(() => console.log('Mongodb connected...'))
+    .catch(err => console.log(err));
 
 let PostSchema = new Schema({
     make: String,
